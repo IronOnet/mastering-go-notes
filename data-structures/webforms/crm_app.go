@@ -5,6 +5,7 @@ import (
 	"net/http" 
 	"text/template" 
 	"log"
+	
 )
 
 var template_html = template.Must(template.ParseGlob("templates/*")) 
@@ -37,8 +38,8 @@ func Alter(writer http.ResponseWriter, request *http.Request){
 	var customerId int 
 	var customerIdStr = request.FormValue("id") 
 	fmt.Scanf(customerIdStr, "%d", &customerId) 
-	customer.customerId = customerId 
-	customer.customerName = request.FormValue("customername") 
+	customer.CustomerId = customerId 
+	customer.CustomerName = request.FormValue("customername") 
 	customer.SSN = request.FormValue("ssn") 
 	UpdateCustomer(customer) 
 	var customers []Customer 
